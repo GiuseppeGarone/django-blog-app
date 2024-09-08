@@ -5,7 +5,10 @@ from .models import Post
 
 def index(request):
     posts = Post.objects.all()
-    context = {
-        'posts': posts
-    }
-    return render(request, 'index.html', context=context)
+    context = {'posts': posts}
+    return render(request, 'index.html', context)
+
+def post(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {'post': post}
+    return render(request, 'post.html', context)
